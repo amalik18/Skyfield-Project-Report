@@ -1,0 +1,110 @@
+\documentclass[a4paper, twoside, 12pt]{report}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{import}
+\usepackage{listings}
+\usepackage{bm}
+\usepackage{subfiles}
+\usepackage{float}
+\usepackage{pdfpages}
+\usepackage{gensymb}
+\usepackage[smartEllipses]{markdown}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\ttm,
+morekeywords={self},              % Add keywords here
+keywordstyle=\ttb\color{deepblue},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+frame=tb,                         % Any extra options here
+showstringspaces=false,
+breaklines=true
+}}
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+\pythonstyle
+\lstset{#1}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+\pythonstyle
+\lstinputlisting[#1]{#2}}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+% \def\thesection{\arabic{section}}
+% \def\thesubsection{\arabic{section}.\arabic{subsection}}
+% \def\thesubsubsection{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+\linespread{1} 
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{graphicx}
+\graphicspath{ {./components/photos/} } 
+\lstset{breaklines=true}
+
+\title{Skyfield Project Report}
+\author{Joshua Weitz\\Ali Malik}
+
+\begin{document}
+
+\subfile{components/title.tex}
+
+\tableofcontents
+\listoffigures
+\newpage
+
+
+\chapter{Background}
+\subfile{components/background.tex}
+\chapter{Approach}
+\subfile{components/approach.tex}
+\chapter{Setup}
+\subfile{components/setup.tex}
+\chapter{Implementation}
+\subfile{components/implementation.tex}
+\chapter{Challenges}
+\subfile{components/challenges.tex}
+\chapter{Results}
+\subfile{components/results.tex}
+
+
+\appendix
+\subfile{components/code/code.tex}
+\label{appendix:code}
+
+
+\subfile{components/code/profile.tex}
+\label{appendix:profile}
+
+\bibliographystyle{IEEEtran} % We choose the "plain" reference style
+\bibliography{refs} % Entries are in the refs.bib file
+
+\end{document}

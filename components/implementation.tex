@@ -1,0 +1,48 @@
+\documentclass[../main.tex]{subfiles}
+\usepackage[utf8x]{inputenc}
+\usepackage{blindtext}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{hyperref}
+
+\begin{document}
+
+
+\section{Goal}
+The goal of this project was to evaluate the Skyfield\cite{skyfield-main} Python library to check whether it could serve as a viable option to track celestial bodies. One of the most important aspects of evaluating this library was something easy to implement, setup, and something accurate. This implementation should allow the tracking of planets and spacecrafts on interplanetary missions. This implementation will be a stepping stone for implementing tracking capabilities for the 9M Dish at George Mason University.
+
+\section{Scope}
+The scope of this project was a programmatic approach to calculate altitude, azimuth, distance, and time components for planets and spacecrafts using the Skyfield\cite{skyfield-main} library. We limited our scope initially to only being able to track planets and the Voyager 1 probe, but as the project progressed we expanded the scope to including tracking of satellites using their NORAD ID by leveraging the CelesTrak website\cite{kelso}to provide two-line element (TLE) data regarding the satellite. 
+
+\section{Code Layout}
+The code is split into two directories, one containing all of the data (which is downloaded dynamically or can be loaded statically) and the other containing all of the source code. 
+
+The source code itself is laid out in the following manner:
+\begin{itemize}
+    \item \textbf{\textit{\underline{client.py}}}: This file contains all of the client classes that interface directly with the various libraries, including Skyfield. 
+    
+    \item \textbf{\textit{\underline{track.py}}}: This file contains the code to create a command line-interface (CLI) which allows the user to interface with the code. This file also contains calls to and from the \textbf{\textit{client.py}} file. 
+\end{itemize}
+
+\section{Design}
+There were a few design decisions that were taken to achieve this project. One of the main decisions was obfuscation from the user's end. The goal was to not allow the customer any insight into how the library used at a high level. This decision lends itself in the form of creating clients to interface directly with the libraries and giving the user an abstraction on top of that. 
+
+Another important design decision was to allow for a usable CLI which allows the user to pass in critical information to determine the wanted results. For example the \textbf{\textit{track\_planet}} command allows for the following input (taken straight from the commands help menu, also found in the package README): 
+
+\begin{itemize}
+    \item Planet
+    \item Latitude
+    \item Longitude
+    \item Initial Time (Start Time)
+    \item End Time (Stop Time)
+    \item Points (\# of samples)
+    \item The minimum viewing angle
+\end{itemize}
+
+All of these options allow the user to provide very specific input and allow them to modify it depending on need. This modularity, exists across all commands within the package. This abstraction ontop of the libraries gives the user a very ease of usage and improves user experience, which is extremely important, since this will serve as a building block for a legitimate tracking capability for the Dish available at GMU. 
+
+The final package can be found here: \url{https://github.com/amalik18/ece580_skyfield}
+
+
+\end{document}

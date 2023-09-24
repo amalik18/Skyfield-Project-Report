@@ -1,0 +1,14 @@
+\documentclass[../main.tex]{subfiles}
+\usepackage[utf8x]{inputenc}
+\usepackage{blindtext}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{siunitx}
+
+\begin{document}
+
+We encountered a number of challenges with with project. First, Skyfield only natively supports SPK type 2 and type 3 files. Many of the SPK files provided by JPL NAIF\cite{NAIF} are of type 1, and the SPK files provided by JPL Horizons\cite{JPL-Horizons} are type 21. We found some support Python libraries which are able to real SPK type 1 and SPK type 21 data and provide vectors that Skyfield can use\cite{spk-01}\cite{spk-21}. Once we worked that out, we were able to open the SPK files for Voyager 1 and for the asteroid Didymos. Additionally, we were asked about the asteroid Dimorphos which orbits Didymos, and the DART spacecraft which is on it's way to the asteroids. Neither Dimorphos nor DART were in the JPL SPK files and we were unable to find ephemeris files to track these objects.
+
+We also encountered difficulty with the independently validating the Skyfield outputs. There does not need to by any other easily accessible system which provides azimuth and elevation for a given celestial body from a given location on earth at a given time. The best we could find was The Sky Live Online Planetarium\cite{sky-live}. The data we wanted to validate is available there, unfortunately there does not seem to be a web API which we could use to automate the process of getting the azimuth an elevation values for arbitrary times and locations. The website is meant to show a vi sable representation of the sky for a given location. Once the location, time, and target body is set, the azimuth and elevation can be seen by mousing over the target on the displayed sky. Using this method we were able to manually verify a few times each for Mars, the Moon, and Voyager against Skyfield, but it was a tedious process. 
+
+\end{document}

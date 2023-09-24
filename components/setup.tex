@@ -1,0 +1,22 @@
+\documentclass[../main.tex]{subfiles}
+\usepackage[utf8x]{inputenc}
+\usepackage{blindtext}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{siunitx}
+
+\begin{document}
+
+Before setting up the development environment, Python must be installed the host system, preferably Python3.x+ (which is usually vended out of the box for most Linux distributions). The easiest way to setup this project for personal or developmental use is to use the Python module \textit{pip} to install the Skyfield\cite{skyfield-main} package. Installing the Skyfield package also installs all of the necessary packages, such as: \textit{numpy} and others. Skyfield is supported all operating systems since it's a Python package and doesn't really rely on low-level operating system specific details. This setup and installation process was tested and verified on a Raspberry Pi 4B running Debian 10 as the OS, which came with Python3 already installed. To successfully install Skyfield and the necessary dependencies use the following command:
+
+\begin{lstlisting}
+python3 -m pip install skyfield spktype01 spktype21
+\end{lstlisting}
+
+The above command works perfectly for macOS and any Linux distribution. For Windows systems its a bit different, below showcases it. 
+
+\begin{lstlisting}
+python -m pip install skyfield spktype01 spktype21
+\end{lstlisting}
+
+\end{document}
